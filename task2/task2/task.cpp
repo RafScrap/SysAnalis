@@ -1,8 +1,7 @@
-//В консоли, когда находимся в папке task2, идем в папку x64, а оттуда - в папку Debug
-//Как это сделать в Windows: cd ./x64/Debug
+//В консоли, когда находимся в папке проекта, идем в папку x64, а оттуда - в папку Debug
 //Запускаем task2.exe с именами файлов:
 //task2 in.csv out.csv
-//out.csv - файл для вывода таблицы, его можно поменять по вашему усмотрению
+//out.csv - файл, куда выводится таблица, его можно поменять по вашему усмотрению
 
 #include <fstream> 
 #include <sstream>
@@ -16,17 +15,17 @@ bool cmp(vector<int> a, vector<int> b) {
 	return a[0] < b[0];
 }
 
-vector<vector<int>> readCSV(std::string file) {
-	std::ifstream ifStream(file);
-	std::string line, cell1, cell2;
+vector<vector<int>> readCSV(string file) {
+	ifstream ifStream(file);
+	string line, cell1, cell2;
 	vector <vector<int>> graph;
 	char delimiter = ';';
 	if (ifStream.is_open()) {
 		while (getline(ifStream, line)) {
-			std::stringstream stringStream(line); // Преобразование строки в поток
+			stringstream stringStream(line); // Преобразование строки в поток
 			getline(stringStream, cell1, delimiter);
 			getline(stringStream, cell2, delimiter);
-			vector <int> pair = { std::stoi(cell1) - 1, std::stoi(cell2) - 1 };
+			vector <int> pair = { stoi(cell1) - 1, stoi(cell2) - 1 };
 			graph.push_back(pair);
 		}
 	}
@@ -34,9 +33,8 @@ vector<vector<int>> readCSV(std::string file) {
 	return graph;
 }
 
-void writeCSV(std::string file, vector <vector<vector<int>>>& nodes) {
+void writeCSV(string file, vector <vector<vector<int>>>& nodes) {
 	ofstream fout(file);
-	std::string line, cell1, cell2;
 	char delimiter = ';';
 	for (int i = 0; i < nodes.size(); i++) {
 		for (int j = 0; j < nodes[i].size(); j++) {
@@ -114,14 +112,14 @@ void G5(vector<vector<int>>& graph, vector <vector<bool>>& G) {
 }
 
 int main(int argc, char* argv[]) {
-	std::string file = argv[1];
+	string file = argv[1];
 	vector<vector<int>> graph = readCSV(file);
 	int countNodes = maxNode(graph) + 1;
 	vector <vector<bool>> G = vector <vector<bool>>(5, vector<bool>(countNodes, false));
 	vector <vector<vector<int>>> nodes = vector <vector<vector<int>>>(countNodes, vector<vector<int>>(5, vector <int>(0)));
 	nodes12_and_G12(graph, G, nodes);
 	G34(graph, G);
-	std::sort(graph.begin(), graph.end(), cmp);
+	sort(graph.begin(), graph.end(), cmp);
 	G5(graph, G);
 	for (int i = 0; i < G.size(); i++) {
 		cout << "Nodes with G" << i + 1 << ": ";
