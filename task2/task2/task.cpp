@@ -1,8 +1,3 @@
-//В консоли, когда находимся в папке проекта, идем в папку x64, а оттуда - в папку Debug
-//Запускаем task2.exe с именами файлов:
-//task2 in.csv out.csv
-//out.csv - файл, куда выводится таблица, его можно поменять по вашему усмотрению
-
 #include <fstream> 
 #include <sstream>
 #include <iostream>
@@ -36,7 +31,13 @@ vector<vector<int>> readCSV(string file) {
 void writeCSV(string file, vector <vector<vector<int>>>& nodes) {
 	ofstream fout(file);
 	char delimiter = ';';
+	fout << "" << delimiter;
+	for (int i = 1; i <= 5; i++) {
+		fout << "G" << std::to_string(i) << delimiter;	
+	}
+	fout << endl;
 	for (int i = 0; i < nodes.size(); i++) {
+		fout << "Node " << std::to_string(i + 1) << delimiter;
 		for (int j = 0; j < nodes[i].size(); j++) {
 			fout << nodes[i][j].size() << delimiter;
 		}

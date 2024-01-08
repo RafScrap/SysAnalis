@@ -1,8 +1,3 @@
-//В консоли, когда находимся в папке проекта, идем в папку x64, а оттуда - в папку Debug
-//Запускаем task3.exe с именами файлов:
-//task3 out.csv
-//out.csv - файл, откуда считывается таблица
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -15,11 +10,14 @@ int main(int argc, char* argv[]) {
 	long double H = 0.0;
 	if (ifStream.is_open()) {
 		long double n = 0;
+		getline(ifStreamN, line);
 		while (getline(ifStreamN, line))
 			n += 1;
+		getline(ifStream, line);
 		while (getline(ifStream, line)) {
 			std::stringstream stringStream(line); // Преобразование строки в поток
 			long double H_i = 0.0;
+			getline(stringStream, cell, delimiter);
 			for (int i = 0; i < 5; i++) {
 				getline(stringStream, cell, delimiter);
 				long double l = std::stold(cell);

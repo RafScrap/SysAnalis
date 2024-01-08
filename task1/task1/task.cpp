@@ -1,9 +1,3 @@
-//В консоли, когда находимся в папке проекта, идем в папку x64, а оттуда - в папку Debug
-//Запускаем task1.exe с именами файлов:
-//task1 inTable.csv inCoord.csv
-//inTable.csv - файл с таблицей
-//inCoord.csv - файл с координатами ячейки, чье содержимое мы хотим вывести
-
 #include <fstream> 
 #include <sstream>
 #include <iostream>
