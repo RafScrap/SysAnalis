@@ -6,7 +6,7 @@
 
 В Windows это можно сделать командой cd [путь до нужной папки]
 
-5. В командной строке вводим команду task1 inTable.csv inCoord.csv, запускающую task1.exe, где:
+4. В командной строке вводим команду task1 inTable.csv inCoord.csv, запускающую task1.exe, где:
 
 inTable.csv - файл с таблицей
 
