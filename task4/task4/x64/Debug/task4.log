@@ -1,0 +1,4 @@
+﻿  task.cpp
+C:\Users\black\codes\SysAnalis\task4\task4\task.cpp(21,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\black\codes\SysAnalis\task4\task4\task.cpp(22,21): warning C4018: <: несоответствие типов со знаком и без знака
+  task4.vcxproj -> C:\Users\black\codes\SysAnalis\task4\x64\Debug\task4.exe
